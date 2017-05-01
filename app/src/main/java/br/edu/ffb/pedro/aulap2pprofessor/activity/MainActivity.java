@@ -232,6 +232,9 @@ public class MainActivity extends AppCompatActivity {
                                     // É necessário criar um novo objeto para que o id seja atualizado pelo autoincrement
                                     saveNewReport(quizData.questionnaire);
                                     EventBus.getDefault().post(new QuizDataEvent(QuizDataEvent.QUESTIONNAIRE_RECEIVED));
+                                    Log.d(BullyElectionP2p.TAG,  "Questionário recebido de " +
+                                            quizData.questionnaire.getStudentName());
+                                    Log.d(BullyElectionP2p.TAG, "Questionário recebido: " + quizData.questionnaire.toString());
                                     Toast.makeText(MainActivity.this, "Questionário recebido de " +
                                             quizData.questionnaire.getStudentName(), Toast.LENGTH_SHORT).show();
                                     break;

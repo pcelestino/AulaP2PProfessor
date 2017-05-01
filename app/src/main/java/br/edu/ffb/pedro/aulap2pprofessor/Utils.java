@@ -108,7 +108,7 @@ public class Utils {
                         }
                     });
 
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
 
 
                     AsyncJob.doOnMainThread(new AsyncJob.OnMainThreadJob() {
@@ -118,7 +118,7 @@ public class Utils {
                         }
                     });
 
-                    Thread.sleep(3000);
+                    Thread.sleep(8000);
 
                     AsyncJob.doOnMainThread(new AsyncJob.OnMainThreadJob() {
                         @Override

@@ -55,6 +55,7 @@ public class QuizFragment extends Fragment {
     private Quiz quiz;
     private MainActivity mainActivity;
     private View emptyView;
+    private boolean isSendQuestionnaireToLeaderEvent;
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
@@ -92,6 +93,7 @@ public class QuizFragment extends Fragment {
                                 "os questionários dos alunos serão atualizados")
                         .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface arg0, int arg1) {
+                                isSendQuestionnaireToLeaderEvent = true;
                                 mainActivity.bullyElectionP2p.bootstrapElection();
                             }
                         })
@@ -191,19 +193,22 @@ public class QuizFragment extends Fragment {
                 Toast.makeText(getContext(), "Líder eleito: " +
                         bullyElectionEvent.device.readableName, Toast.LENGTH_SHORT).show();
 
-                Questionnaire questionnaire = getAppDaoSession()
-                        .getQuestionnaireDao()
-                        .load(Questionnaire.DEFAULT_QUESTIONNAIRE);
+                if (isSendQuestionnaireToLeaderEvent) {
+                    Questionnaire questionnaire = getAppDaoSession()
+                            .getQuestionnaireDao()
+                            .load(Questionnaire.DEFAULT_QUESTIONNAIRE);
 
-                if (questionnaire != null) {
-                    Log.d(BullyElectionP2p.TAG, "Enviando o questionário para o líder");
-                    QuizData quizData = new QuizData();
-                    quizData.message = QuizData.LOAD_QUIZ;
-                    quizData.questionnaire = questionnaire;
-                    mainActivity.bullyElectionP2p.sendToLeader(quizData);
-                } else {
-                    Toast.makeText(mainActivity, "Por favor, carregue um questionário",
-                            Toast.LENGTH_SHORT).show();
+                    if (questionnaire != null) {
+                        Log.d(BullyElectionP2p.TAG, "Enviando o questionário para o líder");
+                        QuizData quizData = new QuizData();
+                        quizData.message = QuizData.LOAD_QUIZ;
+                        quizData.questionnaire = questionnaire;
+                        mainActivity.bullyElectionP2p.sendToLeader(quizData);
+                    } else {
+                        Toast.makeText(mainActivity, "Por favor, carregue um questionário",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                    isSendQuestionnaireToLeaderEvent = false;
                 }
                 break;
         }
