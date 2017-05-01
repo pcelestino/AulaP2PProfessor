@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">AulaP2P Professor</string>
+    <string name="professor_name_input_label">Olá professor, por favor insira o seu nome.</string>
+    <string name="professor_name_input_text">Insira o seu nome aqui</string>
+    <string name="please_insert_your_name">Por favor, insira o seu nome.</string>
+    <string name="waiting_for_students">Aguardando Alunos</string>
+    <string name="waiting_for_questionnaires">Aguardando Questionários</string>
+    <string name="send">Enviar</string>
+    <string name="students_list">Lista de alunos</string>
+    <string name="students">Alunos</string>
+    <string name="quiz">Questões</string>
+    <string name="students_class">Aula</string>
+    <string name="student_leader_icon_description">Indica se o aluno é o lider ou não</string>
+    <string name="leave">Sair</string>
+    <string name="start_election">Iniciar eleição</string>
+    <string name="log">Log</string>
+    <string name="report">Relatório</string>
+    <string name="finish_class">Finalizar Aula</string>
+    <string name="change">Alterar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="dialog_change_professor_name_description">Olá %1$s, ao alterar o seu nome, sua sessão será reiniciada</string>
+    <string name="change_name">Alterar Nome</string>
+    <string name="waiting_students_response">Aguardando respostas dos alunos</string>
+    <string name="waiting_questionnaire">Aguardando o Questionário</string>
+    <string name="waiting_questionnaire_subtitle">Utilize o menu na barra superior para carregá-lo</string>
+</resources>

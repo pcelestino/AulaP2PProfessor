@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    tools:context="br.edu.ffb.pedro.aulap2pprofessor.activity.MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlStudentReportContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvStudentNameReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="start"
+            android:layout_toLeftOf="@+id/ivStudentReportIcon"
+            android:layout_toStartOf="@+id/ivStudentReportIcon"
+            android:padding="10dp"
+            android:text="Pedro Celestino Silveira"
+            android:textAlignment="textStart"
+            android:textColor="@color/secondary_text"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivStudentReportIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="end|center"
+            android:contentDescription="@string/student_leader_icon_description"
+            android:minHeight="50dp"
+            android:minWidth="50dp"
+            android:padding="8dp"
+            app:srcCompat="@drawable/ic_clipboard" />
+
+        <TextView
+            android:id="@+id/tvStudentReportScoreLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvStudentNameReport"
+            android:background="@color/secondary_text_background"
+            android:padding="10dp"
+            android:text="Nota:"
+            android:textColor="@color/secondary_text"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvStudentReportScoreValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvStudentNameReport"
+            android:layout_toEndOf="@+id/tvStudentReportScoreLabel"
+            android:layout_toRightOf="@id/tvStudentReportScoreLabel"
+            android:background="@color/secondary_text_background"
+            android:padding="10dp"
+            android:paddingEnd="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingStart="0dp"
+            android:text="9.5"
+            android:textColor="@color/secondary_text"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
