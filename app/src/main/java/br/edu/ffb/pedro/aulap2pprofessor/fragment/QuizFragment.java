@@ -94,7 +94,12 @@ public class QuizFragment extends Fragment {
                         .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface arg0, int arg1) {
                                 isSendQuestionnaireToLeaderEvent = true;
-                                mainActivity.bullyElectionP2p.bootstrapElection();
+                                Log.d("EXISTE LIDER?", String.valueOf(mainActivity.bullyElectionP2p.registeredLeader != null));
+                                if (mainActivity.bullyElectionP2p.registeredLeader != null) {
+                                    sendQuestionnaire();
+                                } else {
+                                    mainActivity.bullyElectionP2p.bootstrapElection();
+                                }
                             }
                         })
                         .setNegativeButton("Não", null)
@@ -193,24 +198,28 @@ public class QuizFragment extends Fragment {
                 Toast.makeText(getContext(), "Líder eleito: " +
                         bullyElectionEvent.device.readableName, Toast.LENGTH_SHORT).show();
 
-                if (isSendQuestionnaireToLeaderEvent) {
-                    Questionnaire questionnaire = getAppDaoSession()
-                            .getQuestionnaireDao()
-                            .load(Questionnaire.DEFAULT_QUESTIONNAIRE);
-
-                    if (questionnaire != null) {
-                        Log.d(BullyElectionP2p.TAG, "Enviando o questionário para o líder");
-                        QuizData quizData = new QuizData();
-                        quizData.message = QuizData.LOAD_QUIZ;
-                        quizData.questionnaire = questionnaire;
-                        mainActivity.bullyElectionP2p.sendToLeader(quizData);
-                    } else {
-                        Toast.makeText(mainActivity, "Por favor, carregue um questionário",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                    isSendQuestionnaireToLeaderEvent = false;
-                }
+                sendQuestionnaire();
                 break;
+        }
+    }
+
+    private void sendQuestionnaire() {
+        if (isSendQuestionnaireToLeaderEvent) {
+            Questionnaire questionnaire = getAppDaoSession()
+                    .getQuestionnaireDao()
+                    .load(Questionnaire.DEFAULT_QUESTIONNAIRE);
+
+            if (questionnaire != null) {
+                Log.d(BullyElectionP2p.TAG, "Enviando o questionário para o líder");
+                QuizData quizData = new QuizData();
+                quizData.message = QuizData.LOAD_QUIZ;
+                quizData.questionnaire = questionnaire;
+                mainActivity.bullyElectionP2p.sendToLeader(quizData);
+            } else {
+                Toast.makeText(mainActivity, "Por favor, carregue um questionário",
+                        Toast.LENGTH_SHORT).show();
+            }
+            isSendQuestionnaireToLeaderEvent = false;
         }
     }
 
